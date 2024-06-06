@@ -88,3 +88,15 @@ server {
             proxy_pass   http://fileserver;
         }
    }
+
+
+
+        location /course/preview/learning.html {
+                alias D:/itcast2022/xc_edu3.0/code_1/xc-ui-pc-static-portal/course/learning.html;
+        } 
+        location /course/search.html {  
+                root   D:/itcast2022/xc_edu3.0/code_1/xc-ui-pc-static-portal;
+        } 
+        location /course/learning.html {  
+                root   D:/itcast2022/xc_edu3.0/code_1/xc-ui-pc-static-portal;
+        }
