@@ -100,3 +100,31 @@ server {
         location /course/learning.html {  
                 root   D:/itcast2022/xc_edu3.0/code_1/xc-ui-pc-static-portal;
         }
+
+
+
+upstream uidevserver{
+    server 127.0.0.1:8601 weight=10;
+  } 
+   server {
+        listen       80;
+        server_name  teacher.51xuecheng.cn;
+        #charset koi8-r;
+        ssi on;
+        ssi_silent_errors on;
+        #access_log  logs/host.access.log  main;
+        #location / {
+         #   alias   D:/itcast2022/xc_edu3.0/code_1/dist/;
+         #   index  index.html index.htm;
+        #}
+        location / {
+            proxy_pass   http://uidevserver;
+        }
+
+        location /api/ {
+                proxy_pass http://gatewayserver/;
+        } 
+        
+        
+   }
+
